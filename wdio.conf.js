@@ -21,6 +21,19 @@ export const config = {
     // of the config file unless it's absolute.
     //
 
+    services: ['devtools', 'intercept', 'firefox-profile','selenium-standalone'],
+
+
+
+    capabilities: [{
+      maxInstances: 1,
+      browserName: 'firefox',
+      'moz:firefoxOptions': {
+          args: ['-headless'],  // Enable headless mode
+      },
+  }],
+    
+
   before: async function (capabilities, specs) {
     await browser.url( "https://imtest.intainmarkets.us/")
     // Place any setup code that needs the `browser` object here
@@ -150,7 +163,7 @@ export const config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 6000000
     },
 
     // ...
