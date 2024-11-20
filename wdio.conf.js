@@ -23,15 +23,13 @@ export const config = {
 
     services: ['devtools', 'intercept', 'firefox-profile','selenium-standalone'],
 
-
-
     capabilities: [{
       maxInstances: 1,
       browserName: 'firefox',
       'moz:firefoxOptions': {
-          args: ['-headless'],  // Enable headless mode
+        args: ['-headless'],  // Enable headless mode
       },
-  }],
+    }],
     
 
   before: async function (capabilities, specs) {
@@ -162,15 +160,26 @@ export const config = {
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd',
-        timeout: 6000000
+      ui: 'bdd',
+      timeout: 60000, // 1 minute per test
     },
+    waitforTimeout: 10000, // 10 seconds
+    connectionRetryTimeout: 120000, // 2 minutes
+    services: ['devtools', 'intercept', 'firefox-profile', 'selenium-standalone'],
+    
+  //   // ...
+  //   reporters: [['allure', {
+  //     outputDir: 'allure-results',
+  //       disableWebdriverScreenshotsReporting: true,
+  // }]],
 
-    // ...
-    reporters: [['allure', {
-      outputDir: 'allure-results',
-        disableWebdriverScreenshotsReporting: true,
+  reporters: [['allure', {
+
+    outputDir: 'allure-results',
+    disableWebdriverScreenshotsReporting: false,
   }]],
+  
+  baseUrl: 'https://imtest.intainmarkets.us',
 
 
 //   ['junit', {
