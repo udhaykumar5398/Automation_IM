@@ -26,16 +26,16 @@ export const config = {
     // Place any setup code that needs the `browser` object here
   },
     specs: [
-      // './test/Issuer/test.e2e.js',
-      //  './test/Issuer/setuppool.e2e.js',
-     // './test/Underwriter/underwriter.js',
+      //'./test/Issuer/test.e2e.js',
+        //'./test/Issuer/setuppool.e2e.js',
+     './test/Underwriter/underwriter.js',
        //  './test/Underwriter/demo.js',
 
           //  './test/Investor/Inves.js',
          //'./test/PayingAgent/Paying.js',
           //   './test/RatinAg/RA.js',
 
-          './test/Servicer/ser.js',
+          //'./test/Servicer/ser.js',
 
 
     ],
@@ -69,6 +69,9 @@ export const config = {
         browserName: 'firefox'
     }],
 
+
+ 
+  
     //
     // ===================
     // Test Configurations
@@ -126,6 +129,7 @@ export const config = {
     // before running any tests.
     framework: 'mocha',
     
+
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -140,6 +144,7 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec'],
+    
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -147,6 +152,21 @@ export const config = {
         ui: 'bdd',
         timeout: 60000
     },
+
+    // ...
+    reporters: [['allure', {
+      outputDir: 'allure-results',
+        disableWebdriverScreenshotsReporting: true,
+  }]],
+
+
+//   ['junit', {
+//     outputDir: './junit-results',  // Directory where JUnit XML files will be saved
+//     outputFileFormat: function (options) { // Optional: Custom file name format
+//         return `results-${options.cid}.xml`;
+//     }
+// }]
+//],
 
     //
     // =====
@@ -244,6 +264,13 @@ export const config = {
      */
     // afterTest: function(test, context, { error, result, duration, passed, retries }) {
     // },
+
+
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+      if (error) {
+        await browser.takeScreenshot();
+    }
+  }
 
 
     /**

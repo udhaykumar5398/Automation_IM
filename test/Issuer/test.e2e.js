@@ -19,7 +19,7 @@ describe("IntainVA Processor Dashboard", () => {
 
     console.log(await browser.getTitle());
 
-    await login("testIS2@intainft.com", "Int@1#M@K&T$", "Issuer");
+    await login("testissuer001@intainft.com", "Intain123!", "Issuer");
 
     await browser.waitUntil(
       async () => (await browser.getUrl()).includes("/issuer/dashboard"),
@@ -38,196 +38,250 @@ describe("IntainVA Processor Dashboard", () => {
     await selectAndClickElementByText(elements, "Original Balance");
     await selectAndClickElementByText(elements, "Status");
 
+
+
+    // Click submit button
+    const Setuppool = await $(
+      "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[3]/div/div/button"
+    );
+    await Setuppool.click();
+
+    await $("/html/body/div[4]/div/div/div/div[2]/form/div[1]/input").setValue(
+      "testnov20"
+    );
+    console.log("poolname entered: testnov14v1");
+
+    // Click submit button
+    const Assettype = await $(
+      "/html/body/div[4]/div/div/div/div[2]/form/div[2]/select"
+    );
+    await Assettype.click();
+
+    // Click submit button
+    const Assettypeselelct = await $(
+      "/html/body/div[4]/div/div/div/div[2]/form/div[2]/select/option[2]"
+    );
+    await Assettypeselelct.click();
+
+
+    // Click submit button
+    const TransactionType = await $(
+        "/html/body/div[4]/div/div/div/div[2]/form/div[3]/select"
+      );
+      await TransactionType.click();
+
+
+
+    // Click submit button
+    const TransactionTypeSelect = await $(
+        "/html/body/div[4]/div/div/div/div[2]/form/div[3]/select/option[3]"
+      );
+      await TransactionTypeSelect.click();
+
+      await $("/html/body/div[4]/div/div/div/div[2]/form/div[4]/textarea").setValue(
+        "testing"
+      );
+      console.log("Description entered: testing");
+  
+// // Click submit button
+const Setupbutton = await $(
+    "/html/body/div[4]/div/div/div/div[2]/form/div[5]/div/div/div/button[2]"
+  );
+  await Setupbutton.click();
+
     const loans = await $("/html/body/div[1]/div/div[2]/div[1]/ul/li[2]/a");
     await loans.click();
 
     await browser.pause(3000);
 
-    // const Addbutton = await $(
-    //   "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/button[1]/span[1]"
-    // );
-    // await Addbutton.click();
+    const Addbutton = await $(
+      "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/button[1]/span[1]"
+    );
+    await Addbutton.click();
 
-    // const uploadbutton = await $(
-    //   "/html/body/div[6]/div/div/div/div[2]/form/div[1]/div/div/button"
-    // );
-    // await uploadbutton.click();
+    const uploadbutton = await $(
+      "/html/body/div[6]/div/div/div/div[2]/form/div[1]/div/div/button"
+    );
+    await uploadbutton.click();
 
-    // // Step 3: Locate the file input element where you upload the Excel file
-    // const fileInput = await $('input[type="file"]');
+    // Step 3: Locate the file input element where you upload the Excel file
+    const fileInput = await $('input[type="file"]');
 
-    // // Step 4: Resolve the file path and upload
-    // const filePath = path.resolve(
-    //   "/home/rohityadav/Downloads/LMS_L100_20871001.xlsx"
-    // );
-    // await fileInput.setValue(filePath);
-    // console.log("Excel file uploaded successfully.");
-    // await browser.keys("Escape"); // Close the file manager if it’s still open
+    // Step 4: Resolve the file path and upload
+    const filePath = path.resolve(
+      "/home/rohityadav/Downloads/LMS_L10_9975121.xlsx"
+    );
+    await fileInput.setValue(filePath);
+    console.log("Excel file uploaded successfully.");
+    await browser.keys("Escape"); // Close the file manager if it’s still open
 
-    // const Assectlass = await $(
-    //   "/html/body/div[6]/div/div/div/div[2]/form/div[2]/select"
-    // );
-    // await Assectlass.click();
+    const Assectlass = await $(
+      "/html/body/div[6]/div/div/div/div[2]/form/div[2]/select"
+    );
+    await Assectlass.click();
 
-    // const Assectlassselect = await $(
-    //   "/html/body/div[6]/div/div/div/div[2]/form/div[2]/select/option[2]"
-    // );
-    // await Assectlassselect.click();
+    const Assectlassselect = await $(
+      "/html/body/div[6]/div/div/div/div[2]/form/div[2]/select/option[2]"
+    );
+    await Assectlassselect.click();
 
-    // const Asofdate = await $(
-    //   "/html/body/div[6]/div/div/div/div[2]/form/div[3]/div/div[1]/div/input"
-    // );
-    // await Asofdate.click();
+    const Asofdate = await $(
+      "/html/body/div[6]/div/div/div/div[2]/form/div[3]/div/div[1]/div/input"
+    );
+    await Asofdate.click();
 
-    // const dateselect = await $(
-    //   "/html/body/div[6]/div/div/div/div[2]/form/div[3]/div/div[2]/div[2]/div/div/div[2]/div[2]/div[3]/div[5]"
-    // );
-    // await dateselect.click();
+    const dateselect = await $(
+      "/html/body/div[6]/div/div/div/div[2]/form/div[3]/div/div[2]/div[2]/div/div/div[2]/div[2]/div[3]/div[5]"
+    );
+    await dateselect.click();
 
-    // const next = await $(
-    //   "/html/body/div[6]/div/div/div/div[2]/form/div[4]/div/div/div/button[2]/span[1]"
-    // );
-    // await next.click();
+    const next = await $(
+      "/html/body/div[6]/div/div/div/div[2]/form/div[4]/div/div/div/button[2]/span[1]"
+    );
+    await next.click();
 
-    // const maploanid = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[149]/td/div[2]/div/input"
-    // );
-    // await maploanid.click();
+    const maploanid = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[210]/td/div[2]/div/input"
+    );
+    await maploanid.click();
 
-    // await browser.pause(3000);
 
-    // const maploanid1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr/td[2]/div[2]/div/select"
-    // );
-    // await maploanid1.click();
+    const maploanid1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr/td[2]/div[2]/div/select"
+    );
+    await maploanid1.click();
 
-    // const maploanidselec = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr/td[2]/div[2]/div/select/option[2]"
-    // );
-    // await maploanidselec.click();
+    const maploanidselec = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr/td[2]/div[2]/div/select/option[2]"
+    );
+    await maploanidselec.click();
 
-    // const DataStartDate = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[97]/td/div[2]/div/input"
-    // );
-    // await DataStartDate.click();
+    const DataStartDate = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[132]/td/div[2]/div/input"
+    );
+    await DataStartDate.click();
 
-    // await maploanid1.click();
+    await maploanid1.click();
 
-    // const DataStartDate1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[2]/td[2]/div[2]/div/select/option[3]"
-    // );
-    // await DataStartDate1.click();
+    const DataStartDate1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[2]/td[2]/div[2]/div/select/option[3]"
+    );
+    await DataStartDate1.click();
 
-    // const OriginatorName = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[184]/td/div[2]/div/input"
-    // );
+    const OriginatorName = await $(
+     "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[266]/td/div[2]/div/input"
+    );
 
-    // await OriginatorName.click();
+    await OriginatorName.click();
 
-    // await maploanid1.click();
+    await maploanid1.click();
 
-    // const OriginatorName1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[3]/td[2]/div[2]/div/select/option[7]"
-    // );
+    const OriginatorName1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[3]/td[2]/div[2]/div/select/option[7]"
+    );
 
-    // await OriginatorName1.click();
+    await OriginatorName1.click();
 
-    // const Originatordate = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[181]/td/div[2]/div/input"
-    // );
+    const Originatordate = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[263]/td/div[2]/div/input"
+    );
 
-    // await Originatordate.click();
-    // await maploanid1.click();
+    await Originatordate.click();
+    await maploanid1.click();
 
-    // const Originatordate1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[4]/td[2]/div[2]/div/select/option[6]"
-    // );
+    const Originatordate1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[4]/td[2]/div[2]/div/select/option[6]"
+    );
 
-    // await Originatordate1.click();
+    await Originatordate1.click();
 
-    // const OriginalPrincipalBalance = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[174]/td/div[2]/div/input"
-    // );
+    const OriginalPrincipalBalance = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[256]/td/div[2]/div/input"
+    );
 
-    // await OriginalPrincipalBalance.click();
+    await OriginalPrincipalBalance.click();
 
-    // await maploanid1.click();
+    await maploanid1.click();
 
-    // const OriginalPrincipalBalance1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[5]/td[2]/div[2]/div/select/option[12]"
-    // );
+    const OriginalPrincipalBalance1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[5]/td[2]/div[2]/div/select/option[12]"
+    );
 
-    // await OriginalPrincipalBalance1.click();
+    await OriginalPrincipalBalance1.click();
 
-    // const Borrower = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[15]/td/div[2]/div/input"
-    // );
+    const Borrower = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[29]/td/div[2]/div/input"
+    );
 
-    // await Borrower.click();
-    // await maploanid1.click();
-    // const Borrower1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[6]/td[2]/div[2]/div/select/option[9]"
-    // );
+    await Borrower.click();
+    await maploanid1.click();
+    const Borrower1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[6]/td[2]/div[2]/div/select/option[9]"
+    );
 
-    // await Borrower1.click();
-
-    // await maploanid1.click();
-    // const down = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]"
-    // );
+    await Borrower1.click();
 
 
 
-    // const PropertyState = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[216]/td/div[2]/div/input"
-    // );
 
-    // await PropertyState.click();
-    // await maploanid1.click();
-    // const PropertyState1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[7]/td[2]/div[2]/div/select/option[5]"
-    // );
 
-    // await PropertyState1.click();
+
+
+   
+
+
+    const PropertyState = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[316]/td/div[2]/div/input"
+    );
+
+    await PropertyState.click();
+    await maploanid1.click();
+    const PropertyState1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[7]/td[2]/div[2]/div/select/option[5]"
+    );
+
+    await PropertyState1.click();
    
 
 
 
 
-    // const Propertycity = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[215]/td/div[2]/div/input"
-    // );
+    const Propertycity = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[311]/td/div[2]/div/input"
+    );
 
-    // await Propertycity.click();
+    await Propertycity.click();
+        
+    await maploanid1.click();
+    const Propertycity1 = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[8]/td[2]/div[2]/div/select/option[4]"
+    );
 
-    // await maploanid1.click();
-    // const Propertycity1 = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[8]/td[2]/div[2]/div/select/option[4]"
-    // );
-
-    // await Propertycity1.click();
+    await Propertycity1.click();
   
 
 
-    // const GrossInterest
-    // = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[123]/td/div[2]/div/input"
-    // );
 
-    // await GrossInterest.click();
+    const GrossInterest
+    = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[176]/td/div[2]/div/input"
+    );
 
-    // await maploanid1.click();
-    // const GrossInterest1
-    // = await $(
-    //   "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[9]/td[2]/div[2]/div/select/option[8]"
-    // );
+    await GrossInterest.click();
+    await browser.pause(3000);
 
-    // await GrossInterest1.click();
+    await maploanid1.click();
+    const GrossInterest1
+    = await $(
+      "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[2]/div/div[2]/table/tbody/tr[9]/td[2]/div[2]/div/select/option[8]"
+    );
+
+    await GrossInterest1.click();
 
 
 
-    // const addLoansButton = await $("/html/body/div[5]/div/div/div[2]/div/div/div[3]/button[2]");
-    // await addLoansButton.click();
+    const addLoansButton = await $("/html/body/div[5]/div/div/div[2]/div/div/div[3]/button[2]");
+    await addLoansButton.click();
 
 ///////---------filtr
 
@@ -240,7 +294,7 @@ describe("IntainVA Processor Dashboard", () => {
 
     const entergtval = await $("/html/body/div[10]/div[2]/div[3]/div[1]/input");
     await entergtval.setValue(
-      "20871001"
+      "9975141"
     );
 
 
@@ -254,170 +308,117 @@ describe("IntainVA Processor Dashboard", () => {
 
     const enterlsval = await $("/html/body/div[10]/div[2]/div[3]/div[3]/input");
     await enterlsval.setValue(
-      "20871102"
-    );
+      "9975150"
+    );     await browser.pause(1000);
+
+
 
     const submit = await $("/html/body/div[10]/div[2]/div[3]/div[4]/button[2]");
     await submit.click();
 
-    const selectloans = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[1]/span");
-    await selectloans.click();
+ 
+    const selectall = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[1]/span/span[1]/input");
+    await selectall.click();
+
+
+
 
     const action = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/button[2]");
     await action.click();
 
 
-    //_----------------**filter
 
-    // const verifyloan = await $("/html/body/div[10]/button[1]");
-    // await verifyloan.click();
-
-
-    // const AssignVA = await $("/html/body/div[7]/div/div/div/div[2]/form/div[1]/select");
-    // await AssignVA.click();
+    const maptopool = await $("/html/body/div[10]/button[2]");
+    await maptopool.click();
 
 
-    // const testVA = await $("/html/body/div[7]/div/div/div/div[2]/form/div[1]/select/option[5]");
-    // await testVA.click();
+    const maptopoolse = await $("/html/body/div[10]/div/div/div/div[2]/form/div[1]/select/option[2]");
+    await maptopoolse.click();
 
-    // const VAtemplate = await $("/html/body/div[7]/div/div/div/div[2]/form/div[2]/select");
-    // await VAtemplate.click();
-
-    // const IMA1 = await $("/html/body/div[7]/div/div/div/div[2]/form/div[2]/select/option[3]");
-    // await IMA1.click();
-
-    // // const contract = await $("/html/body/div[7]/div/div/div/div[2]/form/div[3]/select/option[1]");
-    // await contract.click();
+    const mapnow = await $("/html/body/div[10]/div/div/div/div[2]/form/div[2]/div/div/div/button[2]");
+    await mapnow.click();
 
 
-
-    // const contractdata = await $("/html/body/div[7]/div/div/div/div[2]/form/div[3]/select/option[42]");
-    // await contractdata.click();
-
-
-    // const Assetlass = await $("/html/body/div[7]/div/div/div/div[2]/form/div[4]/select");
-    // await Assetlass.click();
+    const prew = await $("/html/body/div[1]/div/div[2]/div[1]/ul/li[1]/a");
+    await prew.click();
 
 
-    // const RRE = await $("/html/body/div[7]/div/div/div/div[2]/form/div[4]/select/option[2]");
-    // await RRE.click();
-
-
-    // const loanid = await $("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div/div[1]/input");
-    // await loanid.click();
-
-
-    // const grsint = await $("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div/div[2]/input");
-    // await grsint.click();
-
-    // const city = await $("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div/div[3]/input");
-    // await city.click();
-
-
-    // const state = await $("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div/div[4]/input");
-    // await state.click();
-
-    // const borrowername = await $("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div/div[5]/input");
-    // await borrowername.click();
-
-
-    // const crntprnc = await $("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div/div[6]/input");
-    // await crntprnc.click();
-
-
-    // const orgdate = await $("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div/div[7]/input");
-    // await orgdate.click();
-
-
-
-    // const orgdate = await $("/html/body/div[10]/button[2]");
-    // await orgdate.click();
-
-
-
-    // const ipselect = await $("/html/body/div[10]/div/div/div/div[2]/form/div[1]/select");
-    // await ipselect.click();
-
-
-
-
-    // const testnov14 = await $("/html/body/div[10]/div/div/div/div[2]/form/div[1]/select/option[93]");
-    // await testnov14.click();
-
-
-
-
-    // const maptopool = await $("/html/body/div[10]/div/div/div/div[2]/form/div[2]/div/div/div/button[2]/span[1]");
-    // await maptopool.click();
-////------------****8----------------------preview stage
-
-
-
-    const pre = await $("/html/body/div[1]/div/div[2]/div[1]/ul/li[1]/a/img");
-    await pre.click();
-
-
-
-    const srch = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[3]/div/div[1]/button");
-    await srch.click();
-    await browser.pause(3000);
-
-
-    const srchenter = await $('//*[@id="searchBox"]/div/div/div/input');
-    await srchenter.setValue(
-      "testnov14"
-    );
-    await browser.pause(3000);
-
-
-    const view = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr[2]/td[9]/div/button[1]");
+    const view = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr/td[9]/div/button[1]");
     await view.click();
 
-    await browser.pause(3000);
+    const submitto = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/button[2]");
+    await submitto.click();
 
 
-
-    const Submit = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/button[2]");
-    await Submit.click();
-
-    await browser.pause(3000);
-
-    const preview = await $("/html/body/div[19]/button[1]");
-    await preview.click();
-    await browser.pause(3000);
+    const prew1 = await $("/html/body/div[19]/button[1]");
+    await prew1.click();
 
 
-    const underaccess1 = await $("/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]");
-    await underaccess1.click();
+    const UA = await $("/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]");
+    await UA.click();
 
-    const underaccess = await $("/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]/input");
-    await underaccess.setValue(
-      "Test UW"
+    const UA1 = await $("/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]/input");
+    await UA1.setValue(
+      "TEST UNDERWRITER"
     );
-    await browser.keys("Enter");
-
-    const invesaccess1 = await $("/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div");
-    await invesaccess1.click();
+    await browser.keys('ArrowDown'); 
 
 
+    await browser.keys('Enter'); 
 
-    const invesval = await $("/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div/div[1]/div[2]/input");
-    await invesval.setValue(
+
+    const IA = await $("/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div/div[1]/div[2]");
+    await IA.click();
+
+
+    const IA1 = await $("/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div/div[1]/div[2]/input");
+    await IA1.setValue(
       "Test Investor"
     );
-    await browser.keys("Enter");
+
+    await browser.keys('Enter'); 
 
 
     const RA = await $("/html/body/div[9]/div/div/div/div[2]/form/div[6]/div/div/div[1]/div[2]");
     await RA.click();
 
-    const Rain = await $("/html/body/div[9]/div/div/div/div[2]/form/div[6]/div/div/div[1]/div[2]/input");
-    await Rain.setValue(
+    const RA1 = await $("/html/body/div[9]/div/div/div/div[2]/form/div[6]/div/div/div[1]/div[2]/input");
+    await RA1.setValue(
       "Test RA"
     );
-    await browser.keys("Enter");
+
+    await browser.keys('Enter'); 
+
+
+    const Submit = await $("/html/body/div[9]/div/div/div/div[2]/form/div[7]/div/div/div/button[2]/span[1]");
+    await Submit.click();
+
+
+    const pending = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[2]");
+    await pending.click();
+
+    const Reconsidore = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[3]");
+    await Reconsidore.click();
+
+   const lontap = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[4]");
+    await lontap.click();
+
+    const lonSummerytap = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[5]");
+    await lonSummerytap.click();
+
+    const strats = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[6]");
+    await strats.click();
+
+    const loan = await $("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[6]");
+    await loan.click();
 
     await browser.pause(3000);
+
+  
+
+
+
+
 
 
   });

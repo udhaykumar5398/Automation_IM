@@ -25,7 +25,6 @@ export async function login(username, password, role) {
 
  
  // Wait for redirection or validation
- await browser.pause(2000); // Adjust as necessary
 
 
 }

@@ -19,7 +19,7 @@ describe("IntainVA Processor Dashboard", () => {
 
     console.log(await browser.getTitle());
 
-    await login("testUW@intainft.com", "int@1#M@K&T$", "Underwriter");
+    await login("testuw2@intainft.com", "Int@1#M@K&T$", "Underwriter");
 
     await browser.waitUntil(
       async () => (await browser.getUrl()).includes("/admin/uw_dashboard_pools"),
@@ -48,7 +48,7 @@ await browser.pause(3000);
  const searchtype = await $(
   "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div/div/input"
 );
-await searchtype.setValue("testnov14v1");
+await searchtype.setValue("testnov20");
 
 
 // Click submit button

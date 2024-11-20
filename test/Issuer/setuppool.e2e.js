@@ -19,7 +19,7 @@ describe("IntainVA Processor Dashboard", () => {
 
     console.log(await browser.getTitle());
 
-    await login("testIS2@intainft.com", "Int@1#M@K&T$", "Issuer");
+    await login("testissuer001@intainft.com", "Intain123!", "Issuer");
 
     await browser.waitUntil(
       async () => (await browser.getUrl()).includes("/issuer/dashboard"),
@@ -40,7 +40,7 @@ describe("IntainVA Processor Dashboard", () => {
 
     // Click submit button
     const Setuppool = await $(
-      "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[3]/div/div[2]/button/span[1]"
+      "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[3]/div/div/button"
     );
     await Setuppool.click();
 
