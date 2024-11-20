@@ -1,0 +1,50 @@
+name: CI
+on:
+  push:
+    branches:
+      - main  # Change to your target branch
+  pull_request:
+    branches:
+      - main  # Change to your target branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      # Run your WebdriverIO tests
+      - name: Run WebdriverIO Tests
+        run: npm run wdio
+
+      # Install Allure command-line tool
+      - name: Install Allure Command-line
+        run: npm install allure-commandline --save-dev
+
+      # Verify Allure Installation
+      - name: Verify Allure Installation
+        run: npx allure --version
+
+      # Ensure allure-results directory exists and is populated
+      - name: List Allure Results
+        run: ls -la ./allure-results
+
+      # Generate Allure report
+      - name: Generate Allure Report
+        run: npx allure generate ./allure-results --clean -o ./allure-report
+
+      # Upload Allure report as an artifact
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: ./allure-report
