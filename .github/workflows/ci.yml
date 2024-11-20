@@ -2,10 +2,10 @@ name: CI
 on:
   push:
     branches:
-      - main  # Change to your target branch
+      - master  # Change to your target branch
   pull_request:
     branches:
-      - main  # Change to your target branch
+      - master  # Change to your target branch
 
 jobs:
   build:
