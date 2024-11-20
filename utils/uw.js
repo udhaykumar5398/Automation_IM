@@ -15,6 +15,8 @@ export async function login(username, password, role) {
      // Open the dropdown and select role
      const roleDropdown1 = await $('/html/body/div[1]/div/div/div/div[1]/div[2]/div[2]/form/div[3]/select/option[6]');
      await roleDropdown1.click();
+     await browser.pause(5000); // Adjust as necessary
+
 
      
    

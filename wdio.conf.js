@@ -28,14 +28,14 @@ export const config = {
     specs: [
       // './test/Issuer/test.e2e.js',
       //  './test/Issuer/setuppool.e2e.js',
-      './test/Underwriter/underwriter.js',
+     // './test/Underwriter/underwriter.js',
        //  './test/Underwriter/demo.js',
 
           //  './test/Investor/Inves.js',
          //'./test/PayingAgent/Paying.js',
           //   './test/RatinAg/RA.js',
 
-         // './test/Servicer/ser.js',
+          './test/Servicer/ser.js',
 
 
     ],
