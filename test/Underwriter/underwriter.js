@@ -13,8 +13,8 @@ async function selectAndClickElementByText(elements, textToFind) {
   console.log(`No matching element found for: ${textToFind}`);
 }
 
-describe("IntainVA Processor Dashboard", () => {
-  it("login page", async () => {
+describe("IntainMarkets UW login", () => {
+  it("UW page", async () => {
     await browser.url("https://imtest.intainmarkets.us/");
 
     console.log(await browser.getTitle());
@@ -48,7 +48,7 @@ await browser.pause(3000);
  const searchtype = await $(
   "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div/div/input"
 );
-await searchtype.setValue("testnov20");
+await searchtype.setValue("testpool-100");
 
 
 // Click submit button
@@ -140,7 +140,6 @@ await Submitbutton1.click();
 
 
 
-    await browser.pause(3000);
 
   });
 });

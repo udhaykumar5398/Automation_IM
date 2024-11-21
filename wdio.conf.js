@@ -37,9 +37,9 @@ export const config = {
     // Place any setup code that needs the `browser` object here
   },
     specs: [
-      //'./test/Issuer/test.e2e.js',
+      './test/Issuer/test.e2e.js',
         //'./test/Issuer/setuppool.e2e.js',
-     './test/Underwriter/underwriter.js',
+   //  './test/Underwriter/underwriter.js',
        //  './test/Underwriter/demo.js',
 
           //  './test/Investor/Inves.js',
@@ -165,7 +165,6 @@ export const config = {
     },
     waitforTimeout: 10000, // 10 seconds
     connectionRetryTimeout: 120000, // 2 minutes
-    services: ['devtools', 'intercept', 'firefox-profile', 'selenium-standalone'],
     
   //   // ...
   //   reporters: [['allure', {
