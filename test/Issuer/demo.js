@@ -349,7 +349,7 @@ describe("IntainMarkets issuer Dashboard", () => {
           await GrossInterest1.click();
           await browser.execute(() => {
             window.__apiResponses = [];
-
+      
             const originalFetch = window.fetch;
             window.fetch = function (...args) {
               return originalFetch.apply(this, args).then((response) => {
@@ -369,7 +369,7 @@ describe("IntainMarkets issuer Dashboard", () => {
                 return response;
               });
             };
-
+      
             const originalXHR = XMLHttpRequest.prototype.open;
             XMLHttpRequest.prototype.open = function () {
               this.addEventListener("load", function () {
@@ -387,6 +387,7 @@ describe("IntainMarkets issuer Dashboard", () => {
               originalXHR.apply(this, arguments);
             };
           });
+      
 
           const addLoansButton = await $(
             "/html/body/div[5]/div/div/div[2]/div/div/div[3]/button[2]"
@@ -395,44 +396,38 @@ describe("IntainMarkets issuer Dashboard", () => {
           await browser.pause(3000); // Allow time for API calls to complete
 
           // Retrieve and process API responses
-          const apiResponses = await browser.execute(
-            () => window.__apiResponses || []
-          );
+          const apiResponses = await browser.execute(() => window.__apiResponses || []);
           console.log("Captured API Responses:", apiResponses);
-
+      
           // Attach to Allure report
           allure.addAttachment(
             "Captured API Responses",
             JSON.stringify(apiResponses, null, 2),
             "application/json"
           );
-
+      
           if (apiResponses.length > 0) {
             const errorResponses = apiResponses.filter(
               (response) => response.status !== 200
             );
-
+      
             console.log("Error API Responses:", errorResponses);
-
+      
             // Log error responses to Allure
             allure.addAttachment(
               "Error API Responses",
               JSON.stringify(errorResponses, null, 2),
               "application/json"
             );
-
+      
             // Assert if there are any errors
             if (errorResponses.length > 0) {
-              throw new Error(
-                `Found ${errorResponses.length} error responses. Check Allure report for details.`
-              );
+              throw new Error(`Found ${errorResponses.length} error responses. Check Allure report for details.`);
             }
           } else {
-            console.warn(
-              "No API responses captured. Ensure that the API calls were made."
-            );
+            console.warn("No API responses captured. Ensure that the API calls were made.");
           }
-
+      
           describe("Filtering loan loan Suite", () => {
             it("Filter loan ", async () => {
               const filter = await $(
@@ -469,26 +464,157 @@ describe("IntainMarkets issuer Dashboard", () => {
                 "/html/body/div[10]/div[2]/div[3]/div[4]/button[2]"
               );
               await submit.click();
+          
 
-              describe("Loans map to pool Suite", () => {
-                it("loans map to pool ", async () => {
-                  const selectall = await $(
-                    "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[1]/span/span[1]/input"
+          describe("Loans map to pool Suite", () => {
+            it("loans map to pool ", async () => {
+              const selectall = await $(
+                "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[1]/span/span[1]/input"
+              );
+              await selectall.click();
+
+              const action = await $(
+                "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/button[2]"
+              );
+              await action.click();
+
+              const maptopool = await $("/html/body/div[10]/button[2]");
+              await maptopool.click();
+
+              const maptopoolse = await $(
+                "/html/body/div[10]/div/div/div/div[2]/form/div[1]/select/option[4]"
+              );
+              await maptopoolse.click();
+
+
+          // Intercept API responses right before clicking Next
+          await browser.execute(() => {
+            window.__apiResponses = [];
+
+            // Intercept fetch requests
+            const originalFetch = window.fetch;
+            window.fetch = function (...args) {
+              return originalFetch.apply(this, args).then((response) => {
+                response
+                  .clone()
+                  .json()
+                  .then((data) => {
+                    window.__apiResponses.push({
+                      url: args[0],
+                      status: response.status,
+                      data: data,
+                    });
+                  });
+                return response;
+              });
+            };
+
+            // Intercept XMLHttpRequest requests
+            const open = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function () {
+              this.addEventListener("load", function () {
+                try {
+                  const responseJSON = JSON.parse(this.responseText);
+                  window.__apiResponses.push({
+                    url: this.responseURL,
+                    status: this.status,
+                    data: responseJSON,
+                  });
+                } catch (e) {
+                  console.error("Error parsing JSON response:", e);
+                }
+              });
+              open.apply(this, arguments);
+            };
+          });
+
+              const mapnow = await $(
+                "/html/body/div[10]/div/div/div/div[2]/form/div[2]/div/div/div/button[2]"
+              );
+              await mapnow.click();
+              await browser.pause(3000);
+
+
+          // Retrieve the captured API responses
+          const apiResponses = await browser.execute(() => {
+            return window.__apiResponses;
+          });
+          console.log("Captured API Responses:", apiResponses);
+
+          // Log the API responses to Allure report
+          allure.addAttachment(
+            "Captured API Responses",
+            JSON.stringify(apiResponses, null, 2),
+            "application/json"
+          );
+
+          // Filter only responses with non-200 status (errors)
+          const errorResponses = apiResponses.filter(
+            (response) => response.status !== 200
+          );
+
+          // Log the error responses to Allure report
+          allure.addAttachment(
+            "Error API Responses",
+            JSON.stringify(errorResponses, null, 2),
+            "application/json"
+          );
+
+              describe("Preview Function Suite", () => {
+                it(" Submited into Preview Function", async () => {
+                  const prew = await $(
+                    "/html/body/div[1]/div/div[2]/div[1]/ul/li[1]/a"
                   );
-                  await selectall.click();
-
-                  const action = await $(
-                    "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/button[2]"
+                  await prew.click();
+                  const view = await $(
+                    "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr[3]/td[9]/div/button[1]"
                   );
-                  await action.click();
+                  await view.click();
 
-                  const maptopool = await $("/html/body/div[10]/button[2]");
-                  await maptopool.click();
-
-                  const maptopoolse = await $(
-                    "/html/body/div[10]/div/div/div/div[2]/form/div[1]/select/option[4]"
+                  const submitto = await $(
+                    "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/button[2]"
                   );
-                  await maptopoolse.click();
+                  await submitto.click();
+
+                  const prew1 = await $("/html/body/div[19]/button[1]");
+                  await prew1.click();
+
+                  const UA = await $(
+                    "/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]"
+                  );
+                  await UA.click();
+
+                  const UA1 = await $(
+                    "/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]/input"
+                  );
+                  await UA1.setValue("TEST UNDERWRITER");
+                  await browser.keys("ArrowDown");
+
+                  await browser.keys("Enter");
+
+                  const IA = await $(
+                    "/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div/div[1]/div[2]"
+                  );
+                  await IA.click();
+
+                  const IA1 = await $(
+                    "/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div/div[1]/div[2]/input"
+                  );
+                  await IA1.setValue("Test Investor");
+
+                  await browser.keys("Enter");
+
+                  const RA = await $(
+                    "/html/body/div[9]/div/div/div/div[2]/form/div[6]/div/div/div[1]/div[2]"
+                  );
+                  await RA.click();
+
+                  const RA1 = await $(
+                    "/html/body/div[9]/div/div/div/div[2]/form/div[6]/div/div/div[1]/div[2]/input"
+                  );
+                  await RA1.setValue("Test RA");
+
+                  await browser.keys("Enter");
 
                   // Intercept API responses right before clicking Next
                   await browser.execute(() => {
@@ -533,10 +659,10 @@ describe("IntainMarkets issuer Dashboard", () => {
                     };
                   });
 
-                  const mapnow = await $(
-                    "/html/body/div[10]/div/div/div/div[2]/form/div[2]/div/div/div/button[2]"
+                  const Submit = await $(
+                    "/html/body/div[9]/div/div/div/div[2]/form/div[7]/div/div/div/button[2]/span[1]"
                   );
-                  await mapnow.click();
+                  await Submit.click();
                   await browser.pause(3000);
 
                   // Retrieve the captured API responses
@@ -563,145 +689,13 @@ describe("IntainMarkets issuer Dashboard", () => {
                     JSON.stringify(errorResponses, null, 2),
                     "application/json"
                   );
-
-                  describe("Preview Function Suite", () => {
-                    it(" Submited into Preview Function", async () => {
-                      const prew = await $(
-                        "/html/body/div[1]/div/div[2]/div[1]/ul/li[1]/a"
-                      );
-                      await prew.click();
-                      const view = await $(
-                        "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr[3]/td[9]/div/button[1]"
-                      );
-                      await view.click();
-
-                      const submitto = await $(
-                        "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/button[2]"
-                      );
-                      await submitto.click();
-
-                      const prew1 = await $("/html/body/div[19]/button[1]");
-                      await prew1.click();
-
-                      const UA = await $(
-                        "/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]"
-                      );
-                      await UA.click();
-
-                      const UA1 = await $(
-                        "/html/body/div[9]/div/div/div/div[2]/form/div[4]/div/div/div[1]/div[2]/input"
-                      );
-                      await UA1.setValue("TEST UNDERWRITER");
-                      await browser.keys("ArrowDown");
-
-                      await browser.keys("Enter");
-
-                      const IA = await $(
-                        "/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div/div[1]/div[2]"
-                      );
-                      await IA.click();
-
-                      const IA1 = await $(
-                        "/html/body/div[9]/div/div/div/div[2]/form/div[5]/div/div/div[1]/div[2]/input"
-                      );
-                      await IA1.setValue("Test Investor");
-
-                      await browser.keys("Enter");
-
-                      const RA = await $(
-                        "/html/body/div[9]/div/div/div/div[2]/form/div[6]/div/div/div[1]/div[2]"
-                      );
-                      await RA.click();
-
-                      const RA1 = await $(
-                        "/html/body/div[9]/div/div/div/div[2]/form/div[6]/div/div/div[1]/div[2]/input"
-                      );
-                      await RA1.setValue("Test RA");
-
-                      await browser.keys("Enter");
-
-                      // Intercept API responses right before clicking Next
-                      await browser.execute(() => {
-                        window.__apiResponses = [];
-
-                        // Intercept fetch requests
-                        const originalFetch = window.fetch;
-                        window.fetch = function (...args) {
-                          return originalFetch
-                            .apply(this, args)
-                            .then((response) => {
-                              response
-                                .clone()
-                                .json()
-                                .then((data) => {
-                                  window.__apiResponses.push({
-                                    url: args[0],
-                                    status: response.status,
-                                    data: data,
-                                  });
-                                });
-                              return response;
-                            });
-                        };
-
-                        // Intercept XMLHttpRequest requests
-                        const open = XMLHttpRequest.prototype.open;
-                        XMLHttpRequest.prototype.open = function () {
-                          this.addEventListener("load", function () {
-                            try {
-                              const responseJSON = JSON.parse(
-                                this.responseText
-                              );
-                              window.__apiResponses.push({
-                                url: this.responseURL,
-                                status: this.status,
-                                data: responseJSON,
-                              });
-                            } catch (e) {
-                              console.error("Error parsing JSON response:", e);
-                            }
-                          });
-                          open.apply(this, arguments);
-                        };
-                      });
-
-                      const Submit = await $(
-                        "/html/body/div[9]/div/div/div/div[2]/form/div[7]/div/div/div/button[2]/span[1]"
-                      );
-                      await Submit.click();
-                      await browser.pause(3000);
-
-                      // Retrieve the captured API responses
-                      const apiResponses = await browser.execute(() => {
-                        return window.__apiResponses;
-                      });
-                      console.log("Captured API Responses:", apiResponses);
-
-                      // Log the API responses to Allure report
-                      allure.addAttachment(
-                        "Captured API Responses",
-                        JSON.stringify(apiResponses, null, 2),
-                        "application/json"
-                      );
-
-                      // Filter only responses with non-200 status (errors)
-                      const errorResponses = apiResponses.filter(
-                        (response) => response.status !== 200
-                      );
-
-                      // Log the error responses to Allure report
-                      allure.addAttachment(
-                        "Error API Responses",
-                        JSON.stringify(errorResponses, null, 2),
-                        "application/json"
-                      );
-                    });
-                  });
                 });
               });
             });
           });
         });
+      });
+    });
       });
     });
   });

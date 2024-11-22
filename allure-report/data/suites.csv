@@ -1,4 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","44229","issuer preview page-300loans 5th time","","Thu Nov 21 17:09:08 IST 2024","broken","Thu Nov 21 17:09:52 IST 2024","","IntainMarkets issuer Dashboard","",""
-"","29805","login page","","Wed Nov 20 20:17:12 IST 2024","passed","Wed Nov 20 20:17:42 IST 2024","","IntainVA Processor Dashboard","",""
-"","27383","issuer preview page-300loans 4th time","","Thu Nov 21 17:01:05 IST 2024","broken","Thu Nov 21 17:01:32 IST 2024","","IntainMarkets issuer Dashboard","",""
+"","5244","upload an Excel file","","Fri Nov 22 16:29:34 IST 2024","passed","Fri Nov 22 16:29:39 IST 2024","","IntainMarkets issuer Dashboard: Upload Excel Suite","",""
+"","5970","map ","","Fri Nov 22 16:29:39 IST 2024","broken","Fri Nov 22 16:29:45 IST 2024","","Mapping loan Suite","",""
+"","9437","should setup a pool successfully","","Fri Nov 22 16:29:24 IST 2024","passed","Fri Nov 22 16:29:34 IST 2024","","IntainMarkets issuer Dashboard: Setup Pool Suite","",""

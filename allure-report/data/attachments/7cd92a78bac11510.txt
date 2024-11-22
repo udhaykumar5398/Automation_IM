@@ -1,3 +1,0 @@
-{
-  "text": "testIS2@intainft.com"
-}
