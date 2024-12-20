@@ -10,9 +10,7 @@ export async function login(username, password, role) {
     // Open the dropdown and select role
     const roleDropdown = await $('/html/body/div[1]/div/div/div/div[1]/div[2]/div[2]/form/div[3]/select');
     await roleDropdown.click();
-    // Ensure the role option is visible and click it
-
-     // Open the dropdown and select role
+  
      const roleDropdown1 = await $('/html/body/div[1]/div/div/div/div[1]/div[2]/div[2]/form/div[3]/select/option[2]');
      await roleDropdown1.click();
    
@@ -20,11 +18,6 @@ export async function login(username, password, role) {
     const submitButton = await $('/html/body/div[1]/div/div/div/div[1]/div[2]/div[2]/form/div[4]/div/div/button/span[1]');
     await submitButton.click();
     
-    // Wait for redirection or validation
-
-
- 
- // Wait for redirection or validation
 
 
 }

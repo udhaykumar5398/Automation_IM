@@ -37,8 +37,8 @@ export const config = {
     // Place any setup code that needs the `browser` object here
   },
     specs: [
-    //  './test/Issuer/test.e2e.js',
-      './test/Issuer/demo.js',
+     // './test/Issuer/test.e2e.js',
+     './test/Issuer/demo.js',
 
 
         //'./test/Issuer/setuppool.e2e.js',
@@ -182,6 +182,14 @@ export const config = {
       disableWebdriverStepsReporting: false,
       disableWebdriverScreenshotsReporting: false
     }]
+  //   ['json',{
+  //     outputDir: './results',
+  //     outputFileFormat: (opts) => {
+  //         return `results-${opts.cid}.${opts.capabilities.browserName}.json`
+  //     }
+  // }]
+
+    
   ],
   
   
