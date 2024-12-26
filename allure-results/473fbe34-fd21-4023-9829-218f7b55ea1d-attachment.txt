@@ -1,3 +1,0 @@
-{
-  "text": "/home/rohityadav/Downloads/628.pdf"
-}

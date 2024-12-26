@@ -3,7 +3,7 @@ import allure from "@wdio/allure-reporter";
 import path from "path";
 
 describe("A login ", () => {
-  it("login", async () => {
+  it("A login", async () => {
     await browser.url("https://imtest.intainmarkets.us/");
     console.log(await browser.getTitle());
 
@@ -55,8 +55,8 @@ describe("A login ", () => {
       };
     });
 
-    describe("A1   Setup Pool ", () => {
-      it("setup a pool", async () => {
+    describe("B   Setup Pool ", () => {
+      it("B setup a pool", async () => {
         const Setuppool = await $(
           "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[3]/div/div/button"
         );
@@ -64,7 +64,7 @@ describe("A login ", () => {
 
         await $(
           "/html/body/div[4]/div/div/div/div[2]/form/div[1]/input"
-        ).setValue("testpool-25");
+        ).setValue("testpool-26");
 
         const Assettype = await $(
           "/html/body/div[4]/div/div/div/div[2]/form/div[2]/select"
@@ -95,8 +95,6 @@ describe("A login ", () => {
         );
         await Setupbutton.click();
 
-        await browser.pause(3000);
-
         const apiResponses = await browser.execute(() => {
           return window.__apiResponses;
         });
@@ -111,8 +109,8 @@ describe("A login ", () => {
         );
       });
     });
-    describe("B  View Loans", () => {
-      it(" View Loans", async () => {
+    describe("C  View Loans", () => {
+      it("C View Loans", async () => {
         // Intercept API responses right before clicking Next
         await browser.execute(() => {
           window.__apiResponses = [];
@@ -184,8 +182,8 @@ describe("A login ", () => {
       });
     });
 
-    describe("C Upload loan  Excel", () => {
-      it("upload an Excel file", async () => {
+    describe("D Upload loan  Excel", () => {
+      it("D upload an Excel file", async () => {
         const loans = await $("/html/body/div[1]/div/div[2]/div[1]/ul/li[2]/a");
         await loans.click();
 
@@ -298,8 +296,8 @@ describe("A login ", () => {
           "application/json"
         );
 
-        describe("D Mapping loan", () => {
-          it("Mapping loan ", async () => {
+        describe("E Mapping loan", () => {
+          it("E Mapping loan ", async () => {
             const maploanid = await $(
               "/html/body/div[5]/div/div/div[2]/div/div/div[1]/div[1]/div/div[2]/table/tbody/tr[210]/td/div[2]/div/input"
             );
@@ -506,8 +504,8 @@ describe("A login ", () => {
               );
             }
 
-            describe("E Filtering loan option", () => {
-              it("Filtering loan option", async () => {
+            describe("F Filtering loan option", () => {
+              it(" F Filtering loan option", async () => {
                 const filter = await $(
                   "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[2]/div/div/img"
                 );
@@ -521,7 +519,7 @@ describe("A login ", () => {
                 const entergtval = await $(
                   "/html/body/div[10]/div[2]/div[3]/div[1]/input"
                 );
-                await entergtval.setValue("109827419");
+                await entergtval.setValue("1098274121");
 
                 const orbtn = await $(
                   "/html/body/div[10]/div[2]/div[3]/div[2]/div[2]/input"
@@ -536,15 +534,15 @@ describe("A login ", () => {
                 const enterlsval = await $(
                   "/html/body/div[10]/div[2]/div[3]/div[3]/input"
                 );
-                await enterlsval.setValue("109827420");
+                await enterlsval.setValue("109827422");
 
                 const submit = await $(
                   "/html/body/div[10]/div[2]/div[3]/div[4]/button[2]"
                 );
                 await submit.click();
 
-                describe("F Map loans to Pool", () => {
-                  it(" Map loans to Pool ", async () => {
+                describe("G Map loans to Pool", () => {
+                  it("G Map loans to Pool ", async () => {
                     await browser.pause(1000);
 
                     const selectall = await $(
@@ -561,7 +559,7 @@ describe("A login ", () => {
                     await maptopool.click();
 
                     const maptopoolse = await $(
-                      "/html/body/div[10]/div/div/div/div[2]/form/div[1]/select/option[4906]"
+                      "/html/body/div[10]/div/div/div/div[2]/form/div[1]/select/option[4907]"
                     );
                     await maptopoolse.click();
 
@@ -639,32 +637,32 @@ describe("A login ", () => {
                     );
                     await browser.pause(1000);
 
-                    describe("G View Summary", () => {
-                      it(" View Summary", async () => {
+                    describe("H View Summary", () => {
+                      it("H View Summary", async () => {
                         const Summary = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[4]"
                         );
                         await Summary.click();
                       });
                     });
-                    describe(" H View Strat", () => {
-                      it("View Strat", async () => {
+                    describe("I View Strat", () => {
+                      it("I View Strat", async () => {
                         const Strat = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[5]"
                         );
                         await Strat.click();
                       });
                     });
-                    describe("I View Loans", () => {
-                      it("View Loans", async () => {
+                    describe("J View Loans", () => {
+                      it("J View Loans", async () => {
                         const Loans = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[6]"
                         );
                         await Loans.click();
                       });
                     });
-                    describe("J Edit >> pool Details", () => {
-                      it("Edit >> pool Details", async () => {
+                    describe("K Edit >> pool Details", () => {
+                      it("K Edit >> pool Details", async () => {
                         const Edit = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/button[1]"
                         );
@@ -685,8 +683,8 @@ describe("A login ", () => {
                         await Submit.click();
                       });
                     });
-                    describe("K Edit >> Loantape", () => {
-                      it("Edit >> Loantape", async () => {
+                    describe("L Edit >> Loantape", () => {
+                      it("L Edit >> Loantape", async () => {
                         const Edit = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/button[1]"
                         );
@@ -718,12 +716,11 @@ describe("A login ", () => {
                           "/html/body/div[8]/div/div/div[2]/div/div/div[3]/button[2]"
                         );
                         await Addloans.click();
-
                       });
                     });
 
-                    describe("L Unmap Loan from Pool (Pending >> Delete Loans)", () => {
-                      it(" Unmap Loan from Pool (Pending >> Delete Loans)", async () => {
+                    describe("M Unmap Loan from Pool (Pending >> Delete Loans)", () => {
+                      it("M Unmap Loan from Pool (Pending >> Delete Loans)", async () => {
                         const Pending = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[2]"
                         );
@@ -741,16 +738,12 @@ describe("A login ", () => {
                       });
                     });
 
-                   
-
-                    describe("M pool dashboard", () => {
-                      it(" pool dashboard)", async () => {
+                    describe("N pool dashboard", () => {
+                      it("N pool dashboard)", async () => {
                         const dashboard = await $(
                           "//html/body/div[1]/div/div[2]/div[1]/ul/li[1]/a"
                         );
                         await dashboard.click();
-
-                        await browser.pause(3000);
 
                         const dashboard1 = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[3]/div/div/img"
@@ -760,7 +753,7 @@ describe("A login ", () => {
                         const entergtval = await $(
                           "/html/body/div[4]/div[2]/div[3]/div[1]/div/input"
                         );
-                        await entergtval.setValue("testpool-25");
+                        await entergtval.setValue("testpool-26");
 
                         const Submit = await $(
                           "/html/body/div[4]/div[2]/div[3]/div[4]/button[2]"
@@ -769,28 +762,8 @@ describe("A login ", () => {
                       });
                     });
 
-                    // describe(" pool filter", () => {
-                    //   it(" pool filter)", async () => {
-                    //     const dashboard = await $(
-                    //       "//html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[3]/div/div/img"
-                    //     );
-                    //     await dashboard.click();
-
-                    //     const entergtval = await $(
-                    //       "/html/body/div[4]/div[2]/div[3]/div[1]/div/input"
-                    //     );
-                    //     await entergtval.setValue("testpool-04");
-
-                    //     const Submit = await $(
-                    //       "/html/body/div[4]/div[2]/div[3]/div[4]/button[2]"
-                    //     );
-                    //     await Submit.click();
-
-                    //   });
-                    // });
-
-                    describe("N view pool ", () => {
-                      it(" view pool )", async () => {
+                    describe("O view pool ", () => {
+                      it("O view pool )", async () => {
                         const view = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr/td[9]/div/button[1]"
                         );
@@ -798,8 +771,8 @@ describe("A login ", () => {
                       });
                     });
 
-                    describe("O Submit for preview", () => {
-                      it("Submit for preview", async () => {
+                    describe("P Submit for preview", () => {
+                      it("P Submit for preview", async () => {
                         const Submitpreview = await $(
                           "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/button[2]"
                         );
@@ -844,85 +817,122 @@ describe("A login ", () => {
                         await RA1.setValue("Test RA");
 
                         await browser.keys("Enter");
-
-                        //     // Intercept API responses right before clicking Next
-                        //     await browser.execute(() => {
-                        //       window.__apiResponses = [];
-
-                        //       // Intercept fetch requests
-                        //       const originalFetch = window.fetch;
-                        //       window.fetch = function (...args) {
-                        //         return originalFetch
-                        //           .apply(this, args)
-                        //           .then((response) => {
-                        //             response
-                        //               .clone()
-                        //               .json()
-                        //               .then((data) => {
-                        //                 window.__apiResponses.push({
-                        //                   url: args[0],
-                        //                   status: response.status,
-                        //                   data: data,
-                        //                 });
-                        //               });
-                        //             return response;
-                        //           });
-                        //       };
-
-                        //       // Intercept XMLHttpRequest requests
-                        //       const open = XMLHttpRequest.prototype.open;
-                        //       XMLHttpRequest.prototype.open = function () {
-                        //         this.addEventListener("load", function () {
-                        //           try {
-                        //             const responseJSON = JSON.parse(
-                        //               this.responseText
-                        //             );
-                        //             window.__apiResponses.push({
-                        //               url: this.responseURL,
-                        //               status: this.status,
-                        //               data: responseJSON,
-                        //             });
-                        //           } catch (e) {
-                        //             console.error(
-                        //               "Error parsing JSON response:",
-                        //               e
-                        //             );
-                        //           }
-                        //         });
-                        //         open.apply(this, arguments);
-                        //       };
-                        //     });
-
                         const Submit = await $(
                           "/html/body/div[9]/div/div/div/div[2]/form/div[7]/div/div/div/button[2]/span[1]"
                         );
                         await Submit.click();
-                        //     await browser.pause(3000);
 
-                        //     // Retrieve the captured API responses
-                        //     const apiResponses = await browser.execute(() => {
-                        //       return window.__apiResponses;
-                        //     });
-                        //     console.log("Captured API Responses:", apiResponses);
+                        const dashboard = await $(
+                          "/html/body/div[1]/div/div[2]/div[1]/ul/li[1]/a/img"
+                        );
+                        await dashboard.click();
 
-                        //     // Log the API responses to Allure report
-                        //     allure.addAttachment(
-                        //       "Captured API Responses",
-                        //       JSON.stringify(apiResponses, null, 2),
-                        //       "application/json"
-                        //     );
+                        describe("Q searching pool filter", () => {
+                          it("Q searching pool filter )", async () => {
+                            const dashboard1 = await $(
+                              "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/thead/tr/th[3]/div/div/img"
+                            );
+                            await dashboard1.click();
 
-                        //     // Filter only responses with non-200 status (errors)
-                        //     const errorResponses = apiResponses.filter(
-                        //       (response) => response.status !== 200
-                        //     );
+                            const entergtval = await $(
+                              "/html/body/div[4]/div[2]/div[3]/div[1]/div/input"
+                            );
+                            await entergtval.setValue("testpool-22");
 
-                        //     // Log the error responses to Allure report
-                        //     allure.addAttachment(
-                        //       "Error API Responses",
-                        //       JSON.stringify(errorResponses, null, 2),
-                        //       "application/json"
-                        //     );
+                            const Submit = await $(
+                              "/html/body/div[4]/div[2]/div[3]/div[4]/button[2]"
+                            );
+                            await Submit.click();
+                          });
+                        });
+                        describe("R view pool ", () => {
+                          it("R view pool )", async () => {
+                            const view = await $(
+                              "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr/td[9]/div/button[1]"
+                            );
+                            await view.click();
+                          });
+                        });
+                        describe("S Add document)", () => {
+                          it("S Add document)", async () => {
+                            const Add = await $(
+                              "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[1]/button"
+                            );
+                            await Add.click();
+
+                            const upload = await $(
+                              "/html/body/div[19]/div/div/div/div[2]/form/div[1]/div/div/button"
+                            );
+                            await upload.click();
+
+                            const fileInput = await $('input[type="file"]');
+                            const filePath = path.resolve(
+                              "/home/rohityadav/Downloads/628.pdf"
+                            );
+                            await fileInput.setValue(filePath);
+                            console.log("Excel file uploaded successfully.");
+
+                            await $(
+                              "/html/body/div[19]/div/div/div/div[2]/form/div[2]/input"
+                            ).setValue("document");
+
+                            await $(
+                              "/html/body/div[19]/div/div/div/div[2]/form/div[3]/textarea"
+                            ).setValue("document");
+
+                            const Addbutton = await $(
+                              "/html/body/div[19]/div/div/div/div[2]/form/div[4]/div/div/div/button[2]"
+                            );
+                            await Addbutton.click();
+                          });
+                        });
+
+                        describe("T Download Document", () => {
+                          it(" T Download Document", async () => {
+                            const button1 = await $(
+                              "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]"
+                            );
+                            await button1.click();
+
+                            describe("U delete document", () => {
+                              it("U delete document", async () => {
+                                const button = await $(
+                                  "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]"
+                                );
+                                await button.click();
+
+                                const Delete = await $(
+                                  "/html/body/div[20]/button[2]"
+                                );
+                                await Delete.click();
+
+                                const Delete1 = await $(
+                                  "/html/body/div[4]/div/div/div/div[2]/div/div/div/div/button[2]"
+                                );
+                                await Delete1.click();
+
+                                describe("V Download Loantape xl (Loantape >>download)", () => {
+                                  it("V Download Loantape xl (Loantape >>download)", async () => {
+                                    const download = await $(
+                                      "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/button"
+                                    );
+                                    await download.click();
+
+                                    const download1 = await $(
+                                      "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div[2]/button/span[1]"
+                                    );
+                                    await download1.click();
+
+                                    const excel = await $(
+                                      "/html/body/div[20]/button[1]"
+                                    );
+                                    await excel.click();
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
                       });
                     });
                   });
