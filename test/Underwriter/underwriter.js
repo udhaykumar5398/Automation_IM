@@ -61,7 +61,7 @@ describe("A IntainMarkets UW login", () => {
             describe("E View pool details", () => {
               it("E View pool details", async () => {
                 const view = await $(
-                  "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr[9]/td[8]/div/button"
+                  "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr[10]/td[8]/div/button"
                 );
                 await view.click();
 

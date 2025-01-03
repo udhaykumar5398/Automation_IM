@@ -41,8 +41,8 @@ export const config = {
      //'./test/Issuer/demo.js',
         //'./test/Issuer/setuppool.e2e.js',
    // './test/Underwriter/underwriter.js',
-        './test/Underwriter/underwriter.js',
-          //  './test/Investor/Inves.js',
+     //   './test/Underwriter/underwriter.js',
+            './test/Investor/Inves.js',
          //'./test/PayingAgent/Paying.js',
           //   './test/RatinAg/RA.js',
 

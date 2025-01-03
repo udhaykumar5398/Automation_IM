@@ -13,8 +13,8 @@ async function selectAndClickElementByText(elements, textToFind) {
   console.log(`No matching element found for: ${textToFind}`);
 }
 
-describe("IntainVA Processor Dashboard", () => {
-  it("login page", async () => {
+describe("A IntainVA INVESTOR Dashboard", () => {
+  it("A login page", async () => {
     await browser.url("https://imtest.intainmarkets.us/");
 
     console.log(await browser.getTitle());
@@ -30,72 +30,95 @@ describe("IntainVA Processor Dashboard", () => {
       }
     );
 
-    // Click submit button
-    const search = await $(
-      "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/button/span[1]"
-    );
-    await search.click();
-    await browser.pause(3000);
+    describe("B Searching pool", () => {
+      it("B Searching pool", async () => {
+        const search = await $(
+          "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/button/span[1]"
+        );
+        await search.click();
 
-    // Click submit button
-    const searchtype = await $(
-      "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div/div/input"
-    );
-    await searchtype.setValue("testnov5");
+        // Click submit button
+        const searchtype = await $(
+          "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div/div/input"
+        );
+        await searchtype.setValue("testpool-22");
 
-    // Click submit button
-    const viewdetails = await $(
-      "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr/td[7]/div/button"
-    );
-    await viewdetails.click();
+        describe("C View pool", () => {
+          it("C View pool", async () => {
+            const viewdetails = await $(
+              "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div/div/table/tbody/tr/td[7]/div/button"
+            );
+            await viewdetails.click();
 
-    // Click submit button
-    const action = await $(
-      "/html/body/div[1]/div/div[2]/div[2]/div/div[3]/div/div/table/tbody/tr[1]/td[8]/div/button"
-    );
-    await action.click();
+            describe("D View strat", () => {
+              it("D View strat", async () => {
+                const strat = await $(
+                  "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[3]"
+                );
+                await strat.click();
 
+                describe("E View summary", () => {
+                  it("E View summary", async () => {
+                    const summary = await $(
+                      "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[2]"
+                    );
+                    await summary.click();
 
-    // Click submit button
-    const typing = await $(
-      "/html/body/div[3]/div/div/div/div[2]/div[2]/form/div[1]/div/input"
-    );
-    await typing.setValue("remove the loan");
+                    describe("F View Loan Tape", () => {
+                      it("F View Loan Tape", async () => {
+                        const LoanTape = await $(
+                          "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/buton[1]"
+                        );
+                        await LoanTape.click();
 
+                        // Click submit button
+                        describe("G Retrieve feedback", () => {
+                          it("G Retrieve feedback", async () => {
+                            const action = await $(
+                              "/html/body/div[1]/div/div[2]/div[2]/div/div[3]/div/div/table/tbody/tr[1]/td[8]/div/button"
+                            );
+                            await action.click();
 
-    // Click submit button
-    const send = await $(
-      "/html/body/div[3]/div/div/div/div[2]/div[2]/form/div[1]/div/button"
-    );
-    await send.click();
+                            describe("H Send feedback", () => {
+                              it("H Send feedback", async () => {
+                                const typing = await $(
+                                  "/html/body/div[3]/div/div/div/div[2]/div[2]/form/div[1]/div/input"
+                                );
+                                await typing.setValue("remove the loan");
 
+                                // Click submit button
+                                const send = await $(
+                                  "/html/body/div[3]/div/div/div/div[2]/div[2]/form/div[1]/div/button"
+                                );
+                                await send.click();
 
-    // Click submit button
-    const Downloaddoc = await $(
-      "/html/body/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]"
-    );
-    await Downloaddoc.click();
+                                describe("I Download loan", () => {
+                                  it("I Download loan", async () => {
+                                    const Downloaddoc = await $(
+                                      "/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/button"
+                                    );
+                                    await Downloaddoc.click();
 
-
-       // Click submit button
-       const opport = await $(
-        "/html/body/div[1]/div/div[2]/div[1]/ul/li[3]/a"
-      );
-      await opport.click();
-
-
-
-       // Click submit button
-       const securitization = await $(
-        "/html/body/div/div/div[2]/div[2]/div/div[1]/div[2]/div/buton[2]"
-      );
-      await securitization.click();
-    await browser.pause(3000);
-
-
-
-
-
-
+                                    // Click submit button
+                                    const opport = await $(
+                                      "/html/body/div[11]/button[1]"
+                                    );
+                                    await opport.click();
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
   });
 });
